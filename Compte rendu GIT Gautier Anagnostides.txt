@@ -1,0 +1,93 @@
+Compte rendu GIT Gautier Anagnostides
+
+J'ai donc fait deux comptes git, sur le premier j'ai créé le repository, j'ai invité mon autre compte (VM) et monsieur Masson.
+
+
+Machine 1 :
+
+Configuration du nom et email du compte 1, ainsi que la création des branches
+cd Documents/
+mkdir b1cs1 
+cd b1cs1
+git init
+git config user.name "iflux"
+git config user.email "gautieranag.pro@gmail.com"
+git remote add origin https://github.com/iflux/b1cs1.git
+
+Création de la branche html, et ajout du fichier html sur cette branche
+nano index.html
+git add index.html
+git commit -m "Ajout première page HTML"
+git push -u origin master
+git checkout -b html
+git add index.html
+git push -u origin html
+
+Retour sur la branche master
+git checkout master
+
+Création de la branche css et ajout du fichier css
+git checkout -b css
+nano style.css
+ls
+cat style.css (résultat : css test donc fichier bien créé)
+git add style.css
+git commit -m "Ajout du fichier CSS"
+git push -u origin css
+
+
+Machine 2 : 
+
+Clone du dépôt + configuration du nom/email git
+cd Documents/
+git clone https://github.com/iflux/b1cs1.git
+cd b1cs1/
+ls
+git config user.name "9luxa"
+git config user.email "crystaleyesupplier@gmail.com"
+ls
+
+Passage sur la branche css et récupération des modifications faites par la machine 1
+git checkout css
+git pull origin css
+ls
+
+Modification Visible pour voir si le lien est fait avec la machine 1
+nano style.css 
+git add style.css
+git commit -m "Modification du fichier css sur machine 2"
+git push
+
+
+Machine 1 : 
+
+Vérification des modifications faites sur la machine 2, sur la machine 1
+git pull
+nano style.css 
+
+Machine 2 : 
+
+Modifications sur la machine 2
+git checkout html
+ls
+nano index.html
+git add index.html
+git commit -m "Modification du fichier HTML"
+git push
+
+Récupération des modifications
+
+Machine 1 : 
+git checkout html
+git pull
+nano index.html
+
+git merge html -m "Fusion branche html dans master"
+git merge css -m "Fusion branche css dans master"
+
+
+
+
+
+
+
